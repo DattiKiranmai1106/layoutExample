@@ -1,0 +1,55 @@
+<core:FragmentDefinition
+	xmlns="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+>
+	<Dialog
+		title="Add Expense">
+		<Switch id="switchId" state="true" change="onChangeSwitch"></Switch>
+    <f:SimpleForm
+			editable="true"
+			layout="ResponsiveGridLayout"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+				<Label text="Expense Type" />
+				<Select id="expenseTypeId" visible="true" >
+					<core:Item key="None" text="None" />
+                    <core:Item key="Perdiem" text="Perdiem" />
+                    <core:Item key="Taxi" text="Taxi" />
+				</Select>
+				<Label text="Date" />
+				<DatePicker 
+					id="DP3"
+					value="{
+						'path':'/valueDP2',
+						'type':'sap.ui.model.type.Date',
+						'formatOptions': {
+							'pattern': 'yyyy-MM-dd'
+						}
+					}"
+					change="onLiveChangeValue"
+					class="sapUiSmallMarginBottom"  />
+				<Label text="Days" />
+				<Input id="expenseDayId"  type="Number" liveChange="onLiveChangeValue" visible="true" />
+				<Label text="ExName"></Label>
+				<Input id="exName1" visible="false" required="true" change="onLiveChangeValue"></Input>
+				<Label text="Amount"></Label>
+				<Input id="exAmount"  visible="false" required="true" change="onLiveChangeValue" type="Number"></Input>
+			</f:content>
+		</f:SimpleForm>
+        <Button text="Save" press="onPressSave"  />
+        <Button text="Close" press="onPressClose"  />
+	</Dialog>
+</core:FragmentDefinition>

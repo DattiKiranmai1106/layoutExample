@@ -1,0 +1,104 @@
+<mvc:View controllerName="com.sap.kt.layout.layoutexamp.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:m="sap.m"  xmlns:layout="sap.ui.layout" xmlns="sap.uxap" 
+    >
+
+    <ObjectPageLayout id="ObjectPageLayout"
+		enableLazyLoading="true"
+		beforeNavigate="onBeforeNavigate"
+		useIconTabBar="true"
+		showTitleInHeaderContent="true"
+		upperCaseAnchorBar="false"
+        headerContentPinnable="false"
+		sectionChange="onSectionChange">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedHeading>
+					<m:Title text="Datti Kiranmai" wrapping="true"/>
+				</expandedHeading>
+
+				<expandedContent>
+					<m:Text text=" UI Developer"/>
+				</expandedContent>
+				
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+
+		<headerContent >
+			<m:FlexBox wrap="Wrap" fitContainer="true" width="100%" >
+				<m:Avatar class="sapUiSmallMarginEnd" src=" " displaySize="M" />
+
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd" width="400px">
+					<m:Text text="Kiranmai Datti" ></m:Text>
+                    <m:Text text="+919390541718"></m:Text>
+                    <m:Text text="kiranmaidatti1106@gmail.com"></m:Text>
+				</layout:VerticalLayout>
+
+				<!-- <layout:HorizontalLayout class="sapUiSmallMarginBeginEnd">
+                    <m:Label text="City"></m:Label>
+					<m:Text text="Kalaburagi"></m:Text>
+                    <m:Label text="State"></m:Label>
+                    <m:Text text="Karantaka"></m:Text>
+			    </layout:HorizontalLayout> -->
+
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd" width="400px">
+					<m:Label text="Kalaburagi,Karnataka"/>
+				</layout:VerticalLayout>
+
+                <layout:VerticalLayout class="sapUiSmallMarginBeginEnd" >
+					<m:Avatar src="../images/LinkedIn_icon.svg.png" press="onPressImg" displaySize="S" />
+                    
+			    </layout:VerticalLayout>
+			</m:FlexBox>
+		</headerContent>
+        <sections>
+			<ObjectPageSection titleUppercase="false" id="goals" title="EXPENSES">
+			<subSections>
+				<ObjectPageSubSection id="goalsSS1" titleUppercase="false">
+					<blocks>
+                    <layout:VerticalLayout>
+						<m:Button text="Add Expense" press="onPressEvent"></m:Button>
+                        <m:Table id="idProductsTable" items="{path:'dataBind>/'}" mode="Delete" delete="onDeleteRow" >
+                        <m:columns >
+			            <m:Column>
+			            	<m:Text text="Expense ID" />
+			            </m:Column>
+			            <m:Column>
+			            	<m:Text text="Expense Name" />
+			            </m:Column>
+			            <m:Column>
+			            	<m:Text text="Expense Amount(INR)" />
+			            </m:Column>
+			            <m:Column >
+			            	<m:Text text="Date" />
+			            </m:Column>
+			            <!-- <m:Column>
+			            	<m:Text text="Expense Amount(EVR)" />
+			            </m:Column>
+			            <m:Column>
+			            	<m:Text text="Status" />
+			            </m:Column> -->
+		              </m:columns>
+                    <m:items>
+                        <m:ColumnListItem id="colId"  press="onPressNavView"   >
+                            <m:cells >
+                               <m:Text id="expenseID" text="{dataBind>expenseId}" />
+                               <m:Text id="expenseName" text="{dataBind>expenseName}" />
+                               <m:Input id="expenseAmount" value="{dataBind>expenseAmount}"></m:Input>
+                               <m:Text id="expenseDate"   
+                                text="{path: 'dataBind>expenseDate',type:'sap.ui.model.type.Date',
+				                formatOptions: {
+				                pattern: 'dd-MM-yyyy'
+				                }}" />  
+                            </m:cells>
+                        </m:ColumnListItem>
+                    </m:items>
+                    </m:Table>
+                    </layout:VerticalLayout>
+					</blocks>
+				</ObjectPageSubSection>
+			</subSections>
+			</ObjectPageSection>
+		</sections>
+	</ObjectPageLayout>
+</mvc:View>
